@@ -1708,7 +1708,11 @@ Object.defineProperty(module.exports, 'v1', {
   // scope, we lazy-load and cache the module.
   get: () => {
     if (!v1) {
-      v1 = require('./v1');
+      if (process.env.FIRESTORE_USE_REST_API) {
+        v1 = require('./v1rest');
+      } else {
+        v1 = require('./v1');
+      }
     }
     return v1;
   },
