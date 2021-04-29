@@ -812,6 +812,10 @@ export class Firestore implements firestore.Firestore {
     ) => google.protobuf.ITimestamp | undefined;
     let convertFields: (data: ApiMapValue) => ApiMapValue;
 
+    if (useFirestoreRestApi()) {
+      encoding = 'json'; //Forcing json for rest api usage
+    }
+
     if (encoding === undefined || encoding === 'protobufJS') {
       convertTimestamp = data => data as google.protobuf.ITimestamp;
       convertFields = data => data;
@@ -1330,7 +1334,7 @@ export class Firestore implements firestore.Firestore {
       },
     };
 
-    if (retryCodes) {
+    if (retryCodes && !useFirestoreRestApi()) {
       const retryParams = getRetryParams(methodName);
       callOptions.retry = new RetryOptions(retryCodes, retryParams);
     }
@@ -1708,7 +1712,7 @@ Object.defineProperty(module.exports, 'v1', {
   // scope, we lazy-load and cache the module.
   get: () => {
     if (!v1) {
-      if (process.env.FIRESTORE_USE_REST_API) {
+      if (useFirestoreRestApi()) {
         v1 = require('./v1rest');
       } else {
         v1 = require('./v1');
@@ -1717,3 +1721,10 @@ Object.defineProperty(module.exports, 'v1', {
     return v1;
   },
 });
+
+function useFirestoreRestApi(): boolean {
+  return !(
+    process.env.FIRESTORE_USE_REST_API === undefined ||
+    process.env.FIRESTORE_USE_REST_API.toLowerCase() === 'false'
+  );
+}

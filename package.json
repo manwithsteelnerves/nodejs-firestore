@@ -1,13 +1,16 @@
 {
-  "name": "@google-cloud/firestore",
+  "name": "@manwithsteelnerves/firestore",
   "description": "Firestore Client Library for Node.js",
-  "version": "4.10.0",
+  "version": "4.10.7",
   "license": "Apache-2.0",
   "author": "Google Inc.",
   "engines": {
     "node": ">=10.10.0"
   },
-  "repository": "googleapis/nodejs-firestore",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manwithsteelnerves/nodejs-firestore.git"
+  },
   "main": "./build/src/index.js",
   "types": "./types/firestore.d.ts",
   "files": [
@@ -41,7 +44,8 @@
     "lint": "gts check",
     "clean": "gts clean",
     "compile": "tsc -p .",
-    "postcompile": "node scripts/init-directories.js && cp -r dev/protos build && cp dev/src/v1beta1/*.json build/src/v1beta1/ && cp dev/src/v1/*.json build/src/v1/ && cp dev/conformance/test-definition.proto build/conformance && cp dev/conformance/conformance-tests/*.json build/conformance/conformance-tests",
+    "postcompile": "node scripts/init-directories.js && cp -r dev/protos build && cp dev/src/v1beta1/*.json build/src/v1beta1/ && cp dev/src/v1/*.json build/src/v1/ && cp dev/src/v1rest/*.json build/src/v1rest/ && cp dev/conformance/test-definition.proto build/conformance && cp dev/conformance/conformance-tests/*.json build/conformance/conformance-tests && npm run replaceWithGaxMock",
+    "replaceWithGaxMock": "grep -e \"['\\\"]google-gax['\\\"]\"  build\/src\/* -d skip -l | xargs sed -i \"\" \"s\/['\\\"]google-gax['\\\"]\/'\\.\\\/lazy-load-google-gax'\/g\"",
     "fix": "gts fix",
     "prepare": "npm run compile",
     "docs-test": "linkinator docs",
@@ -59,6 +63,8 @@
     "protobufjs": "^6.8.6"
   },
   "devDependencies": {
+    "@microsoft/api-documenter": "^7.8.10",
+    "@microsoft/api-extractor": "^7.8.10",
     "@types/assert": "^1.4.0",
     "@types/chai": "^4.2.7",
     "@types/chai-as-promised": "^7.1.2",
@@ -83,10 +89,13 @@
     "mocha": "^7.0.0",
     "proxyquire": "^2.1.3",
     "sinon": "^10.0.0",
+    "through2": "^4.0.0",
     "ts-node": "^9.0.0",
     "typescript": "3.8.3",
-    "through2": "^4.0.0",
-    "@microsoft/api-documenter": "^7.8.10",
-    "@microsoft/api-extractor": "^7.8.10"
-  }
+    "webpack": "^5.36.1"
+  },
+  "bugs": {
+    "url": "https://github.com/manwithsteelnerves/nodejs-firestore/issues"
+  },
+  "homepage": "https://github.com/manwithsteelnerves/nodejs-firestore#readme"
 }
