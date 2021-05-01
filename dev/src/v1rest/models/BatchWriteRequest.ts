@@ -10,36 +10,35 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
+import { Write } from './write';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * The request for Firestore.BatchWrite.
  */
 export class BatchWriteRequest {
-  /**
-   * Labels associated with this batch write.
-   */
-  labels?: { [key: string]: string; };
-  /**
-   * The writes to apply. Method does not apply writes atomically and does not guarantee ordering. Each write succeeds or fails independently. You cannot write to the same document more than once per request.
-   */
-  writes?: Array<models.Write>;
+    /**
+     * Labels associated with this batch write.
+     */
+    labels?: { [key: string]: string; };
+    /**
+     * The writes to apply. Method does not apply writes atomically and does not guarantee ordering. Each write succeeds or fails independently. You cannot write to the same document more than once per request.
+     */
+    writes?: Array<Write>;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.labels) {
-      this.labels = json.labels;
-    }
-    if (json.writes) {
-      this.writes = [];
-      json.writes.forEach((element: models.Write) => {
-        this.writes?.push(new models.Write(element));
-      });
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.labels) {
+        this.labels = json.labels;
+        }
+        if (json.writes) {
+        this.writes = [];
+        json.writes.forEach((element: Write) => {
+            this.writes?.push(new Write(element));
+        });
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace

@@ -10,33 +10,31 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * A precondition on a document, used for conditional operations.
  */
 export class Precondition {
-  /**
-   * When set to `true`, the target document must exist. When set to `false`, the target document must not exist.
-   */
-  exists?: boolean;
-  /**
-   * When set, the target document must exist and have been last updated at that time.
-   */
-  updateTime?: string | null;
+    /**
+     * When set to `true`, the target document must exist. When set to `false`, the target document must not exist.
+     */
+    exists?: boolean;
+    /**
+     * When set, the target document must exist and have been last updated at that time.
+     */
+    updateTime?: string;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.exists) {
-      this.exists = json.exists; 
-    }
-    if (json.updateTime) {
-      this.updateTime = helpers.stringFromTimestampJson(json.updateTime); //[Data format: google-datetime
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.exists) {
+        this.exists = json.exists; 
+        }
+        if (json.updateTime) {
+        this.updateTime = helpers.stringFromTimestampJson(json.updateTime); //[Data format: google-datetime
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace

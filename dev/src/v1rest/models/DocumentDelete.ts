@@ -10,40 +10,38 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * A Document has been deleted. May be the result of multiple writes, including updates, the last of which deleted the Document. Multiple DocumentDelete messages may be returned for the same logical delete, if multiple targets are affected.
  */
 export class DocumentDelete {
-  /**
-   * The resource name of the Document that was deleted.
-   */
-  document?: string | null;
-  /**
-   * The read timestamp at which the delete was observed. Greater or equal to the `commit_time` of the delete.
-   */
-  readTime?: string | null;
-  /**
-   * A set of target IDs for targets that previously matched this entity.
-   */
-  removedTargetIds?: Array<number>;
+    /**
+     * The resource name of the Document that was deleted.
+     */
+    document?: string;
+    /**
+     * The read timestamp at which the delete was observed. Greater or equal to the `commit_time` of the delete.
+     */
+    readTime?: string;
+    /**
+     * A set of target IDs for targets that previously matched this entity.
+     */
+    removedTargetIds?: Array<number>;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.document) {
-      this.document = json.document; //[Data format: ]
-    }
-    if (json.readTime) {
-      this.readTime = helpers.stringFromTimestampJson(json.readTime); //[Data format: google-datetime
-    }
-    if (json.removedTargetIds) {
-      this.removedTargetIds = json.removedTargetIds;
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.document) {
+        this.document = json.document; //[Data format: ]
+        }
+        if (json.readTime) {
+        this.readTime = helpers.stringFromTimestampJson(json.readTime); //[Data format: google-datetime
+        }
+        if (json.removedTargetIds) {
+        this.removedTargetIds = json.removedTargetIds;
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace

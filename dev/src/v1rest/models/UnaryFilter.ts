@@ -10,36 +10,42 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
+import { FieldReference } from './fieldReference';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * A filter with a single operand.
  */
 export class UnaryFilter {
-  /**
-   * The field to which to apply the operator.
-   */
-  field?: models.FieldReference;
-  /**
-   * The unary operator to apply.
-   */
-  op?: UnaryFilter.OpEnum;
+    /**
+     * The field to which to apply the operator.
+     */
+    field?: FieldReference;
+    /**
+     * The unary operator to apply.
+     */
+    op?: UnaryFilter.OpEnum;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.field) {
-      this.field = new models.FieldReference(json.field);
-    }
-    if (json.op) {
-      this.op = json.op; //[Data format: ]
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.field) {
+        this.field = new FieldReference(json.field);
+        }
+        if (json.op) {
+        this.op = json.op; //[Data format: ]
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace UnaryFilter {
-  export type OpEnum =  'OPERATOR_UNSPECIFIED'|'IS_NAN'|'IS_NULL'|'IS_NOT_NAN'|'IS_NOT_NULL';
+    export type OpEnum = 'OPERATOR_UNSPECIFIED' | 'IS_NAN' | 'IS_NULL' | 'IS_NOT_NAN' | 'IS_NOT_NULL';
+    export const OpEnum = {
+        OPERATORUNSPECIFIED: 'OPERATOR_UNSPECIFIED' as OpEnum,
+        ISNAN: 'IS_NAN' as OpEnum,
+        ISNULL: 'IS_NULL' as OpEnum,
+        ISNOTNAN: 'IS_NOT_NAN' as OpEnum,
+        ISNOTNULL: 'IS_NOT_NULL' as OpEnum
+    }
 }

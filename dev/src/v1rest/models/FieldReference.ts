@@ -10,23 +10,21 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * A reference to a field, such as `max(messages.time) as max_time`.
  */
 export class FieldReference {
-  fieldPath?: string | null;
+    fieldPath?: string;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.fieldPath) {
-      this.fieldPath = json.fieldPath; //[Data format: ]
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.fieldPath) {
+        this.fieldPath = json.fieldPath; //[Data format: ]
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace

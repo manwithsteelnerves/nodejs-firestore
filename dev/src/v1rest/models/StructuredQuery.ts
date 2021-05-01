@@ -10,81 +10,84 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
+import { CollectionSelector } from './collectionSelector';
+import { Cursor } from './cursor';
+import { Filter } from './filter';
+import { Order } from './order';
+import { Projection } from './projection';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * A Firestore query.
  */
 export class StructuredQuery {
-  /**
-   * A end point for the query results.
-   */
-  endAt?: models.Cursor;
-  /**
-   * The collections to query.
-   */
-  from?: Array<models.CollectionSelector>;
-  /**
-   * The maximum number of results to return. Applies after all other constraints. Must be >= 0 if specified.
-   */
-  limit?: number;
-  /**
-   * The number of results to skip. Applies before limit, but after all other constraints. Must be >= 0 if specified.
-   */
-  offset?: number;
-  /**
-   * The order to apply to the query results. Firestore guarantees a stable ordering through the following rules: * Any field required to appear in `order_by`, that is not already specified in `order_by`, is appended to the order in field name order by default. * If an order on `__name__` is not specified, it is appended by default. Fields are appended with the same sort direction as the last order specified, or 'ASCENDING' if no order was specified. For example: * `SELECT * FROM Foo ORDER BY A` becomes `SELECT * FROM Foo ORDER BY A, __name__` * `SELECT * FROM Foo ORDER BY A DESC` becomes `SELECT * FROM Foo ORDER BY A DESC, __name__ DESC` * `SELECT * FROM Foo WHERE A > 1` becomes `SELECT * FROM Foo WHERE A > 1 ORDER BY A, __name__`
-   */
-  orderBy?: Array<models.Order>;
-  /**
-   * The projection to return.
-   */
-  select?: models.Projection;
-  /**
-   * A starting point for the query results.
-   */
-  startAt?: models.Cursor;
-  /**
-   * The filter to apply.
-   */
-  where?: models.Filter;
+    /**
+     * A end point for the query results.
+     */
+    endAt?: Cursor;
+    /**
+     * The collections to query.
+     */
+    from?: Array<CollectionSelector>;
+    /**
+     * The maximum number of results to return. Applies after all other constraints. Must be >= 0 if specified.
+     */
+    limit?: number;
+    /**
+     * The number of results to skip. Applies before limit, but after all other constraints. Must be >= 0 if specified.
+     */
+    offset?: number;
+    /**
+     * The order to apply to the query results. Firestore guarantees a stable ordering through the following rules: * Any field required to appear in `order_by`, that is not already specified in `order_by`, is appended to the order in field name order by default. * If an order on `__name__` is not specified, it is appended by default. Fields are appended with the same sort direction as the last order specified, or 'ASCENDING' if no order was specified. For example: * `SELECT * FROM Foo ORDER BY A` becomes `SELECT * FROM Foo ORDER BY A, __name__` * `SELECT * FROM Foo ORDER BY A DESC` becomes `SELECT * FROM Foo ORDER BY A DESC, __name__ DESC` * `SELECT * FROM Foo WHERE A > 1` becomes `SELECT * FROM Foo WHERE A > 1 ORDER BY A, __name__`
+     */
+    orderBy?: Array<Order>;
+    /**
+     * The projection to return.
+     */
+    select?: Projection;
+    /**
+     * A starting point for the query results.
+     */
+    startAt?: Cursor;
+    /**
+     * The filter to apply.
+     */
+    where?: Filter;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.endAt) {
-      this.endAt = new models.Cursor(json.endAt);
-    }
-    if (json.from) {
-      this.from = [];
-      json.from.forEach((element: models.CollectionSelector) => {
-        this.from?.push(new models.CollectionSelector(element));
-      });
-    }
-    if (json.limit) {
-      this.limit = json.limit; 
-    }
-    if (json.offset) {
-      this.offset = json.offset; 
-    }
-    if (json.orderBy) {
-      this.orderBy = [];
-      json.orderBy.forEach((element: models.Order) => {
-        this.orderBy?.push(new models.Order(element));
-      });
-    }
-    if (json.select) {
-      this.select = new models.Projection(json.select);
-    }
-    if (json.startAt) {
-      this.startAt = new models.Cursor(json.startAt);
-    }
-    if (json.where) {
-      this.where = new models.Filter(json.where);
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.endAt) {
+        this.endAt = new Cursor(json.endAt);
+        }
+        if (json.from) {
+        this.from = [];
+        json.from.forEach((element: CollectionSelector) => {
+            this.from?.push(new CollectionSelector(element));
+        });
+        }
+        if (json.limit) {
+        this.limit = json.limit; 
+        }
+        if (json.offset) {
+        this.offset = json.offset; 
+        }
+        if (json.orderBy) {
+        this.orderBy = [];
+        json.orderBy.forEach((element: Order) => {
+            this.orderBy?.push(new Order(element));
+        });
+        }
+        if (json.select) {
+        this.select = new Projection(json.select);
+        }
+        if (json.startAt) {
+        this.startAt = new Cursor(json.startAt);
+        }
+        if (json.where) {
+        this.where = new Filter(json.where);
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace

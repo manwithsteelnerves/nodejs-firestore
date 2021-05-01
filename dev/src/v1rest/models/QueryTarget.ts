@@ -10,33 +10,32 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
+import { StructuredQuery } from './structuredQuery';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * A target specified by a query.
  */
 export class QueryTarget {
-  /**
-   * The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
-   */
-  parent?: string | null;
-  /**
-   * A structured query.
-   */
-  structuredQuery?: models.StructuredQuery;
+    /**
+     * The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
+     */
+    parent?: string;
+    /**
+     * A structured query.
+     */
+    structuredQuery?: StructuredQuery;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.parent) {
-      this.parent = json.parent; //[Data format: ]
-    }
-    if (json.structuredQuery) {
-      this.structuredQuery = new models.StructuredQuery(json.structuredQuery);
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.parent) {
+        this.parent = json.parent; //[Data format: ]
+        }
+        if (json.structuredQuery) {
+        this.structuredQuery = new StructuredQuery(json.structuredQuery);
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace

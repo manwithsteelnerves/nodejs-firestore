@@ -10,43 +10,56 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
+import { FieldReference } from './fieldReference';
+import { Value } from './value';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * A filter on a specific field.
  */
 export class FieldFilter {
-  /**
-   * The field to filter by.
-   */
-  field?: models.FieldReference;
-  /**
-   * The operator to filter by.
-   */
-  op?: FieldFilter.OpEnum;
-  /**
-   * The value to compare to.
-   */
-  value?: models.Value;
+    /**
+     * The field to filter by.
+     */
+    field?: FieldReference;
+    /**
+     * The operator to filter by.
+     */
+    op?: FieldFilter.OpEnum;
+    /**
+     * The value to compare to.
+     */
+    value?: Value;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.field) {
-      this.field = new models.FieldReference(json.field);
-    }
-    if (json.op) {
-      this.op = json.op; //[Data format: ]
-    }
-    if (json.value) {
-      this.value = new models.Value(json.value);
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.field) {
+        this.field = new FieldReference(json.field);
+        }
+        if (json.op) {
+        this.op = json.op; //[Data format: ]
+        }
+        if (json.value) {
+        this.value = new Value(json.value);
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace FieldFilter {
-  export type OpEnum =  'OPERATOR_UNSPECIFIED'|'LESS_THAN'|'LESS_THAN_OR_EQUAL'|'GREATER_THAN'|'GREATER_THAN_OR_EQUAL'|'EQUAL'|'NOT_EQUAL'|'ARRAY_CONTAINS'|'IN'|'ARRAY_CONTAINS_ANY'|'NOT_IN';
+    export type OpEnum = 'OPERATOR_UNSPECIFIED' | 'LESS_THAN' | 'LESS_THAN_OR_EQUAL' | 'GREATER_THAN' | 'GREATER_THAN_OR_EQUAL' | 'EQUAL' | 'NOT_EQUAL' | 'ARRAY_CONTAINS' | 'IN' | 'ARRAY_CONTAINS_ANY' | 'NOT_IN';
+    export const OpEnum = {
+        OPERATORUNSPECIFIED: 'OPERATOR_UNSPECIFIED' as OpEnum,
+        LESSTHAN: 'LESS_THAN' as OpEnum,
+        LESSTHANOREQUAL: 'LESS_THAN_OR_EQUAL' as OpEnum,
+        GREATERTHAN: 'GREATER_THAN' as OpEnum,
+        GREATERTHANOREQUAL: 'GREATER_THAN_OR_EQUAL' as OpEnum,
+        EQUAL: 'EQUAL' as OpEnum,
+        NOTEQUAL: 'NOT_EQUAL' as OpEnum,
+        ARRAYCONTAINS: 'ARRAY_CONTAINS' as OpEnum,
+        IN: 'IN' as OpEnum,
+        ARRAYCONTAINSANY: 'ARRAY_CONTAINS_ANY' as OpEnum,
+        NOTIN: 'NOT_IN' as OpEnum
+    }
 }

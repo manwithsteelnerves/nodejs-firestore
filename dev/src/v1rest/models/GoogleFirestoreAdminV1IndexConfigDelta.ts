@@ -10,36 +10,40 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
+import { GoogleFirestoreAdminV1Index } from './googleFirestoreAdminV1Index';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * Information about an index configuration change.
  */
 export class GoogleFirestoreAdminV1IndexConfigDelta {
-  /**
-   * Specifies how the index is changing.
-   */
-  changeType?: GoogleFirestoreAdminV1IndexConfigDelta.ChangeTypeEnum;
-  /**
-   * The index being changed.
-   */
-  index?: models.GoogleFirestoreAdminV1Index;
+    /**
+     * Specifies how the index is changing.
+     */
+    changeType?: GoogleFirestoreAdminV1IndexConfigDelta.ChangeTypeEnum;
+    /**
+     * The index being changed.
+     */
+    index?: GoogleFirestoreAdminV1Index;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.changeType) {
-      this.changeType = json.changeType; //[Data format: ]
-    }
-    if (json.index) {
-      this.index = new models.GoogleFirestoreAdminV1Index(json.index);
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.changeType) {
+        this.changeType = json.changeType; //[Data format: ]
+        }
+        if (json.index) {
+        this.index = new GoogleFirestoreAdminV1Index(json.index);
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace GoogleFirestoreAdminV1IndexConfigDelta {
-  export type ChangeTypeEnum =  'CHANGE_TYPE_UNSPECIFIED'|'ADD'|'REMOVE';
+    export type ChangeTypeEnum = 'CHANGE_TYPE_UNSPECIFIED' | 'ADD' | 'REMOVE';
+    export const ChangeTypeEnum = {
+        CHANGETYPEUNSPECIFIED: 'CHANGE_TYPE_UNSPECIFIED' as ChangeTypeEnum,
+        ADD: 'ADD' as ChangeTypeEnum,
+        REMOVE: 'REMOVE' as ChangeTypeEnum
+    }
 }

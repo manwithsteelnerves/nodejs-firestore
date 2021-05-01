@@ -10,36 +10,35 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
+import { Location } from './location';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * The response message for Locations.ListLocations.
  */
 export class ListLocationsResponse {
-  /**
-   * A list of locations that matches the specified filter in the request.
-   */
-  locations?: Array<models.Location>;
-  /**
-   * The standard List next-page token.
-   */
-  nextPageToken?: string | null;
+    /**
+     * A list of locations that matches the specified filter in the request.
+     */
+    locations?: Array<Location>;
+    /**
+     * The standard List next-page token.
+     */
+    nextPageToken?: string;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.locations) {
-      this.locations = [];
-      json.locations.forEach((element: models.Location) => {
-        this.locations?.push(new models.Location(element));
-      });
-    }
-    if (json.nextPageToken) {
-      this.nextPageToken = json.nextPageToken; //[Data format: ]
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.locations) {
+        this.locations = [];
+        json.locations.forEach((element: Location) => {
+            this.locations?.push(new Location(element));
+        });
+        }
+        if (json.nextPageToken) {
+        this.nextPageToken = json.nextPageToken; //[Data format: ]
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace

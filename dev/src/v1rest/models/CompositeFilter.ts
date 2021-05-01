@@ -10,39 +10,42 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
+import { Filter } from './filter';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * A filter that merges multiple other filters using the given operator.
  */
 export class CompositeFilter {
-  /**
-   * The list of filters to combine. Must contain at least one filter.
-   */
-  filters?: Array<models.Filter>;
-  /**
-   * The operator for combining multiple filters.
-   */
-  op?: CompositeFilter.OpEnum;
+    /**
+     * The list of filters to combine. Must contain at least one filter.
+     */
+    filters?: Array<Filter>;
+    /**
+     * The operator for combining multiple filters.
+     */
+    op?: CompositeFilter.OpEnum;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.filters) {
-      this.filters = [];
-      json.filters.forEach((element: models.Filter) => {
-        this.filters?.push(new models.Filter(element));
-      });
-    }
-    if (json.op) {
-      this.op = json.op; //[Data format: ]
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.filters) {
+        this.filters = [];
+        json.filters.forEach((element: Filter) => {
+            this.filters?.push(new Filter(element));
+        });
+        }
+        if (json.op) {
+        this.op = json.op; //[Data format: ]
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace CompositeFilter {
-  export type OpEnum =  'OPERATOR_UNSPECIFIED'|'AND';
+    export type OpEnum = 'OPERATOR_UNSPECIFIED' | 'AND';
+    export const OpEnum = {
+        OPERATORUNSPECIFIED: 'OPERATOR_UNSPECIFIED' as OpEnum,
+        AND: 'AND' as OpEnum
+    }
 }

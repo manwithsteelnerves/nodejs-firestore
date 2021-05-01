@@ -10,33 +10,33 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
+import { ReadOnly } from './readOnly';
+import { ReadWrite } from './readWrite';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * Options for creating a new transaction.
  */
 export class TransactionOptions {
-  /**
-   * The transaction can only be used for read operations.
-   */
-  readOnly?: models.ReadOnly;
-  /**
-   * The transaction can be used for both read and write operations.
-   */
-  readWrite?: models.ReadWrite;
+    /**
+     * The transaction can only be used for read operations.
+     */
+    readOnly?: ReadOnly;
+    /**
+     * The transaction can be used for both read and write operations.
+     */
+    readWrite?: ReadWrite;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.readOnly) {
-      this.readOnly = new models.ReadOnly(json.readOnly);
-    }
-    if (json.readWrite) {
-      this.readWrite = new models.ReadWrite(json.readWrite);
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.readOnly) {
+        this.readOnly = new ReadOnly(json.readOnly);
+        }
+        if (json.readWrite) {
+        this.readWrite = new ReadWrite(json.readWrite);
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace

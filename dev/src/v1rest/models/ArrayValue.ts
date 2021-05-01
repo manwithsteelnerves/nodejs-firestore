@@ -10,29 +10,28 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
+import { Value } from './value';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * An array value.
  */
 export class ArrayValue {
-  /**
-   * Values in the array.
-   */
-  values?: Array<models.Value>;
+    /**
+     * Values in the array.
+     */
+    values?: Array<Value>;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.values) {
-      this.values = [];
-      json.values.forEach((element: models.Value) => {
-        this.values?.push(new models.Value(element));
-      });
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.values) {
+        this.values = [];
+        json.values.forEach((element: Value) => {
+            this.values?.push(new Value(element));
+        });
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace

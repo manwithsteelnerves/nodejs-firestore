@@ -10,54 +10,57 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
+import { DocumentChange } from './documentChange';
+import { DocumentDelete } from './documentDelete';
+import { DocumentRemove } from './documentRemove';
+import { ExistenceFilter } from './existenceFilter';
+import { TargetChange } from './targetChange';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * The response for Firestore.Listen.
  */
 export class ListenResponse {
-  /**
-   * A Document has changed.
-   */
-  documentChange?: models.DocumentChange;
-  /**
-   * A Document has been deleted.
-   */
-  documentDelete?: models.DocumentDelete;
-  /**
-   * A Document has been removed from a target (because it is no longer relevant to that target).
-   */
-  documentRemove?: models.DocumentRemove;
-  /**
-   * A filter to apply to the set of documents previously returned for the given target. Returned when documents may have been removed from the given target, but the exact documents are unknown.
-   */
-  filter?: models.ExistenceFilter;
-  /**
-   * Targets have changed.
-   */
-  targetChange?: models.TargetChange;
+    /**
+     * A Document has changed.
+     */
+    documentChange?: DocumentChange;
+    /**
+     * A Document has been deleted.
+     */
+    documentDelete?: DocumentDelete;
+    /**
+     * A Document has been removed from a target (because it is no longer relevant to that target).
+     */
+    documentRemove?: DocumentRemove;
+    /**
+     * A filter to apply to the set of documents previously returned for the given target. Returned when documents may have been removed from the given target, but the exact documents are unknown.
+     */
+    filter?: ExistenceFilter;
+    /**
+     * Targets have changed.
+     */
+    targetChange?: TargetChange;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.documentChange) {
-      this.documentChange = new models.DocumentChange(json.documentChange);
-    }
-    if (json.documentDelete) {
-      this.documentDelete = new models.DocumentDelete(json.documentDelete);
-    }
-    if (json.documentRemove) {
-      this.documentRemove = new models.DocumentRemove(json.documentRemove);
-    }
-    if (json.filter) {
-      this.filter = new models.ExistenceFilter(json.filter);
-    }
-    if (json.targetChange) {
-      this.targetChange = new models.TargetChange(json.targetChange);
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.documentChange) {
+        this.documentChange = new DocumentChange(json.documentChange);
+        }
+        if (json.documentDelete) {
+        this.documentDelete = new DocumentDelete(json.documentDelete);
+        }
+        if (json.documentRemove) {
+        this.documentRemove = new DocumentRemove(json.documentRemove);
+        }
+        if (json.filter) {
+        this.filter = new ExistenceFilter(json.filter);
+        }
+        if (json.targetChange) {
+        this.targetChange = new TargetChange(json.targetChange);
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace

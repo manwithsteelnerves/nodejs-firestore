@@ -10,26 +10,24 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * The request for Firestore.Rollback.
  */
 export class RollbackRequest {
-  /**
-   * Required. The transaction to roll back.
-   */
-  transaction?: string | null;
+    /**
+     * Required. The transaction to roll back.
+     */
+    transaction?: string;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.transaction) {
-      this.transaction = helpers.stringFromBufferJson(json.transaction); //[Data format: byte]
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.transaction) {
+        this.transaction = helpers.stringFromBufferJson(json.transaction); //[Data format: byte]
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace

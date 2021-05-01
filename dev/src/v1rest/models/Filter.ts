@@ -10,40 +10,41 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
+import { CompositeFilter } from './compositeFilter';
+import { FieldFilter } from './fieldFilter';
+import { UnaryFilter } from './unaryFilter';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * A filter.
  */
 export class Filter {
-  /**
-   * A composite filter.
-   */
-  compositeFilter?: models.CompositeFilter;
-  /**
-   * A filter on a document field.
-   */
-  fieldFilter?: models.FieldFilter;
-  /**
-   * A filter that takes exactly one argument.
-   */
-  unaryFilter?: models.UnaryFilter;
+    /**
+     * A composite filter.
+     */
+    compositeFilter?: CompositeFilter;
+    /**
+     * A filter on a document field.
+     */
+    fieldFilter?: FieldFilter;
+    /**
+     * A filter that takes exactly one argument.
+     */
+    unaryFilter?: UnaryFilter;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.compositeFilter) {
-      this.compositeFilter = new models.CompositeFilter(json.compositeFilter);
-    }
-    if (json.fieldFilter) {
-      this.fieldFilter = new models.FieldFilter(json.fieldFilter);
-    }
-    if (json.unaryFilter) {
-      this.unaryFilter = new models.UnaryFilter(json.unaryFilter);
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.compositeFilter) {
+        this.compositeFilter = new CompositeFilter(json.compositeFilter);
+        }
+        if (json.fieldFilter) {
+        this.fieldFilter = new FieldFilter(json.fieldFilter);
+        }
+        if (json.unaryFilter) {
+        this.unaryFilter = new UnaryFilter(json.unaryFilter);
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace

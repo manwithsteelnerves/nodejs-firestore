@@ -10,30 +10,29 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
+import { Value } from './value';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * A map value.
  */
 export class MapValue {
-  /**
-   * The map's fields. The map keys represent field names. Field names matching the regular expression `__.*__` are reserved. Reserved field names are forbidden except in certain documented contexts. The map keys, represented as UTF-8, must not exceed 1,500 bytes and cannot be empty.
-   */
-  fields?: { [key: string]: models.Value; };
+    /**
+     * The map's fields. The map keys represent field names. Field names matching the regular expression `__.*__` are reserved. Reserved field names are forbidden except in certain documented contexts. The map keys, represented as UTF-8, must not exceed 1,500 bytes and cannot be empty.
+     */
+    fields?: { [key: string]: Value; };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.fields) {
-      this.fields = {};
-      for (const key of json.fields) {
-          const val = new models.Value(json.fields[key]);
-          this.fields![key] = val;
-      }
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.fields) {
+        this.fields = {};
+        for (const key of json.fields) {
+            const val = new Value(json.fields[key]);
+            this.fields![key] = val;
+        }
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace

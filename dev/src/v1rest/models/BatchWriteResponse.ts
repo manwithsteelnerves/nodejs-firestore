@@ -10,39 +10,39 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
+import { Status } from './status';
+import { WriteResult } from './writeResult';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * The response from Firestore.BatchWrite.
  */
 export class BatchWriteResponse {
-  /**
-   * The status of applying the writes. This i-th write status corresponds to the i-th write in the request.
-   */
-  status?: Array<models.Status>;
-  /**
-   * The result of applying the writes. This i-th write result corresponds to the i-th write in the request.
-   */
-  writeResults?: Array<models.WriteResult>;
+    /**
+     * The status of applying the writes. This i-th write status corresponds to the i-th write in the request.
+     */
+    status?: Array<Status>;
+    /**
+     * The result of applying the writes. This i-th write result corresponds to the i-th write in the request.
+     */
+    writeResults?: Array<WriteResult>;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.status) {
-      this.status = [];
-      json.status.forEach((element: models.Status) => {
-        this.status?.push(new models.Status(element));
-      });
-    }
-    if (json.writeResults) {
-      this.writeResults = [];
-      json.writeResults.forEach((element: models.WriteResult) => {
-        this.writeResults?.push(new models.WriteResult(element));
-      });
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.status) {
+        this.status = [];
+        json.status.forEach((element: Status) => {
+            this.status?.push(new Status(element));
+        });
+        }
+        if (json.writeResults) {
+        this.writeResults = [];
+        json.writeResults.forEach((element: WriteResult) => {
+            this.writeResults?.push(new WriteResult(element));
+        });
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace

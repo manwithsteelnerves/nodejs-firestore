@@ -10,64 +10,67 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
+import { Document } from './document';
+import { DocumentMask } from './documentMask';
+import { DocumentTransform } from './documentTransform';
+import { FieldTransform } from './fieldTransform';
+import { Precondition } from './precondition';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * A write on a document.
  */
 export class Write {
-  /**
-   * An optional precondition on the document. The write will fail if this is set and not met by the target document.
-   */
-  currentDocument?: models.Precondition;
-  /**
-   * A document name to delete. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
-   */
-  'delete'?: string | null;
-  /**
-   * Applies a transformation to a document.
-   */
-  transform?: models.DocumentTransform;
-  /**
-   * A document to write.
-   */
-  update?: models.Document;
-  /**
-   * The fields to update in this write. This field can be set only when the operation is `update`. If the mask is not set for an `update` and the document exists, any existing data will be overwritten. If the mask is set and the document on the server has fields not covered by the mask, they are left unchanged. Fields referenced in the mask, but not present in the input document, are deleted from the document on the server. The field paths in this mask must not contain a reserved field name.
-   */
-  updateMask?: models.DocumentMask;
-  /**
-   * The transforms to perform after update. This field can be set only when the operation is `update`. If present, this write is equivalent to performing `update` and `transform` to the same document atomically and in order.
-   */
-  updateTransforms?: Array<models.FieldTransform>;
+    /**
+     * An optional precondition on the document. The write will fail if this is set and not met by the target document.
+     */
+    currentDocument?: Precondition;
+    /**
+     * A document name to delete. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
+     */
+    _delete?: string;
+    /**
+     * Applies a transformation to a document.
+     */
+    transform?: DocumentTransform;
+    /**
+     * A document to write.
+     */
+    update?: Document;
+    /**
+     * The fields to update in this write. This field can be set only when the operation is `update`. If the mask is not set for an `update` and the document exists, any existing data will be overwritten. If the mask is set and the document on the server has fields not covered by the mask, they are left unchanged. Fields referenced in the mask, but not present in the input document, are deleted from the document on the server. The field paths in this mask must not contain a reserved field name.
+     */
+    updateMask?: DocumentMask;
+    /**
+     * The transforms to perform after update. This field can be set only when the operation is `update`. If present, this write is equivalent to performing `update` and `transform` to the same document atomically and in order.
+     */
+    updateTransforms?: Array<FieldTransform>;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.currentDocument) {
-      this.currentDocument = new models.Precondition(json.currentDocument);
-    }
-    if (json.delete) {
-      this.delete = json.delete; //[Data format: ]
-    }
-    if (json.transform) {
-      this.transform = new models.DocumentTransform(json.transform);
-    }
-    if (json.update) {
-      this.update = new models.Document(json.update);
-    }
-    if (json.updateMask) {
-      this.updateMask = new models.DocumentMask(json.updateMask);
-    }
-    if (json.updateTransforms) {
-      this.updateTransforms = [];
-      json.updateTransforms.forEach((element: models.FieldTransform) => {
-        this.updateTransforms?.push(new models.FieldTransform(element));
-      });
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.currentDocument) {
+        this.currentDocument = new Precondition(json.currentDocument);
+        }
+        if (json._delete) {
+        this._delete = json._delete; //[Data format: ]
+        }
+        if (json.transform) {
+        this.transform = new DocumentTransform(json.transform);
+        }
+        if (json.update) {
+        this.update = new Document(json.update);
+        }
+        if (json.updateMask) {
+        this.updateMask = new DocumentMask(json.updateMask);
+        }
+        if (json.updateTransforms) {
+        this.updateTransforms = [];
+        json.updateTransforms.forEach((element: FieldTransform) => {
+            this.updateTransforms?.push(new FieldTransform(element));
+        });
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace

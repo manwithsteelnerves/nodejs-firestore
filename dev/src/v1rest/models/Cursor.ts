@@ -10,36 +10,35 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
+import { Value } from './value';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * A position in a query result set.
  */
 export class Cursor {
-  /**
-   * If the position is just before or just after the given values, relative to the sort order defined by the query.
-   */
-  before?: boolean;
-  /**
-   * The values that represent a position, in the order they appear in the order by clause of a query. Can contain fewer values than specified in the order by clause.
-   */
-  values?: Array<models.Value>;
+    /**
+     * If the position is just before or just after the given values, relative to the sort order defined by the query.
+     */
+    before?: boolean;
+    /**
+     * The values that represent a position, in the order they appear in the order by clause of a query. Can contain fewer values than specified in the order by clause.
+     */
+    values?: Array<Value>;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.before) {
-      this.before = json.before; 
-    }
-    if (json.values) {
-      this.values = [];
-      json.values.forEach((element: models.Value) => {
-        this.values?.push(new models.Value(element));
-      });
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.before) {
+        this.before = json.before; 
+        }
+        if (json.values) {
+        this.values = [];
+        json.values.forEach((element: Value) => {
+            this.values?.push(new Value(element));
+        });
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace

@@ -10,50 +10,49 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
+import { GoogleFirestoreAdminV1Index } from './googleFirestoreAdminV1Index';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * The index configuration for this field.
  */
 export class GoogleFirestoreAdminV1IndexConfig {
-  /**
-   * Output only. Specifies the resource name of the `Field` from which this field's index configuration is set (when `uses_ancestor_config` is true), or from which it *would* be set if this field had no index configuration (when `uses_ancestor_config` is false).
-   */
-  ancestorField?: string | null;
-  /**
-   * The indexes supported for this field.
-   */
-  indexes?: Array<models.GoogleFirestoreAdminV1Index>;
-  /**
-   * Output only When true, the `Field`'s index configuration is in the process of being reverted. Once complete, the index config will transition to the same state as the field specified by `ancestor_field`, at which point `uses_ancestor_config` will be `true` and `reverting` will be `false`.
-   */
-  reverting?: boolean;
-  /**
-   * Output only. When true, the `Field`'s index configuration is set from the configuration specified by the `ancestor_field`. When false, the `Field`'s index configuration is defined explicitly.
-   */
-  usesAncestorConfig?: boolean;
+    /**
+     * Output only. Specifies the resource name of the `Field` from which this field's index configuration is set (when `uses_ancestor_config` is true), or from which it *would* be set if this field had no index configuration (when `uses_ancestor_config` is false).
+     */
+    ancestorField?: string;
+    /**
+     * The indexes supported for this field.
+     */
+    indexes?: Array<GoogleFirestoreAdminV1Index>;
+    /**
+     * Output only When true, the `Field`'s index configuration is in the process of being reverted. Once complete, the index config will transition to the same state as the field specified by `ancestor_field`, at which point `uses_ancestor_config` will be `true` and `reverting` will be `false`.
+     */
+    reverting?: boolean;
+    /**
+     * Output only. When true, the `Field`'s index configuration is set from the configuration specified by the `ancestor_field`. When false, the `Field`'s index configuration is defined explicitly.
+     */
+    usesAncestorConfig?: boolean;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.ancestorField) {
-      this.ancestorField = json.ancestorField; //[Data format: ]
-    }
-    if (json.indexes) {
-      this.indexes = [];
-      json.indexes.forEach((element: models.GoogleFirestoreAdminV1Index) => {
-        this.indexes?.push(new models.GoogleFirestoreAdminV1Index(element));
-      });
-    }
-    if (json.reverting) {
-      this.reverting = json.reverting; 
-    }
-    if (json.usesAncestorConfig) {
-      this.usesAncestorConfig = json.usesAncestorConfig; 
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.ancestorField) {
+        this.ancestorField = json.ancestorField; //[Data format: ]
+        }
+        if (json.indexes) {
+        this.indexes = [];
+        json.indexes.forEach((element: GoogleFirestoreAdminV1Index) => {
+            this.indexes?.push(new GoogleFirestoreAdminV1Index(element));
+        });
+        }
+        if (json.reverting) {
+        this.reverting = json.reverting; 
+        }
+        if (json.usesAncestorConfig) {
+        this.usesAncestorConfig = json.usesAncestorConfig; 
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace

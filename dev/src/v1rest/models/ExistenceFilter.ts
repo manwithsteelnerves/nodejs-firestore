@@ -10,33 +10,31 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * A digest of all the documents that match a given target.
  */
 export class ExistenceFilter {
-  /**
-   * The total count of documents that match target_id. If different from the count of documents in the client that match, the client must manually determine which documents no longer match the target.
-   */
-  count?: number;
-  /**
-   * The target ID to which this filter applies.
-   */
-  targetId?: number;
+    /**
+     * The total count of documents that match target_id. If different from the count of documents in the client that match, the client must manually determine which documents no longer match the target.
+     */
+    count?: number;
+    /**
+     * The target ID to which this filter applies.
+     */
+    targetId?: number;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.count) {
-      this.count = json.count; 
-    }
-    if (json.targetId) {
-      this.targetId = json.targetId; 
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.count) {
+        this.count = json.count; 
+        }
+        if (json.targetId) {
+        this.targetId = json.targetId; 
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace

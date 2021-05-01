@@ -10,36 +10,35 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
+import { GoogleFirestoreAdminV1Field } from './googleFirestoreAdminV1Field';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * The response for FirestoreAdmin.ListFields.
  */
 export class GoogleFirestoreAdminV1ListFieldsResponse {
-  /**
-   * The requested fields.
-   */
-  fields?: Array<models.GoogleFirestoreAdminV1Field>;
-  /**
-   * A page token that may be used to request another page of results. If blank, this is the last page.
-   */
-  nextPageToken?: string | null;
+    /**
+     * The requested fields.
+     */
+    fields?: Array<GoogleFirestoreAdminV1Field>;
+    /**
+     * A page token that may be used to request another page of results. If blank, this is the last page.
+     */
+    nextPageToken?: string;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.fields) {
-      this.fields = [];
-      json.fields.forEach((element: models.GoogleFirestoreAdminV1Field) => {
-        this.fields?.push(new models.GoogleFirestoreAdminV1Field(element));
-      });
-    }
-    if (json.nextPageToken) {
-      this.nextPageToken = json.nextPageToken; //[Data format: ]
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.fields) {
+        this.fields = [];
+        json.fields.forEach((element: GoogleFirestoreAdminV1Field) => {
+            this.fields?.push(new GoogleFirestoreAdminV1Field(element));
+        });
+        }
+        if (json.nextPageToken) {
+        this.nextPageToken = json.nextPageToken; //[Data format: ]
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace

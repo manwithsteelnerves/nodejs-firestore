@@ -10,26 +10,25 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
+import { TransactionOptions } from './transactionOptions';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * The request for Firestore.BeginTransaction.
  */
 export class BeginTransactionRequest {
-  /**
-   * The options for the transaction. Defaults to a read-write transaction.
-   */
-  options?: models.TransactionOptions;
+    /**
+     * The options for the transaction. Defaults to a read-write transaction.
+     */
+    options?: TransactionOptions;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.options) {
-      this.options = new models.TransactionOptions(json.options);
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.options) {
+        this.options = new TransactionOptions(json.options);
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace

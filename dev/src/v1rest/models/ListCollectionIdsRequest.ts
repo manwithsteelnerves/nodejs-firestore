@@ -10,33 +10,31 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * The request for Firestore.ListCollectionIds.
  */
 export class ListCollectionIdsRequest {
-  /**
-   * The maximum number of results to return.
-   */
-  pageSize?: number;
-  /**
-   * A page token. Must be a value from ListCollectionIdsResponse.
-   */
-  pageToken?: string | null;
+    /**
+     * The maximum number of results to return.
+     */
+    pageSize?: number;
+    /**
+     * A page token. Must be a value from ListCollectionIdsResponse.
+     */
+    pageToken?: string;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.pageSize) {
-      this.pageSize = json.pageSize; 
-    }
-    if (json.pageToken) {
-      this.pageToken = json.pageToken; //[Data format: ]
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.pageSize) {
+        this.pageSize = json.pageSize; 
+        }
+        if (json.pageToken) {
+        this.pageToken = json.pageToken; //[Data format: ]
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace

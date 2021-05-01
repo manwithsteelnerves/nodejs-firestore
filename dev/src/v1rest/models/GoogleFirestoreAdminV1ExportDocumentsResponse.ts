@@ -10,26 +10,24 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * Returned in the google.longrunning.Operation response field.
  */
 export class GoogleFirestoreAdminV1ExportDocumentsResponse {
-  /**
-   * Location of the output files. This can be used to begin an import into Cloud Firestore (this project or another project) after the operation completes successfully.
-   */
-  outputUriPrefix?: string | null;
+    /**
+     * Location of the output files. This can be used to begin an import into Cloud Firestore (this project or another project) after the operation completes successfully.
+     */
+    outputUriPrefix?: string;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.outputUriPrefix) {
-      this.outputUriPrefix = json.outputUriPrefix; //[Data format: ]
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.outputUriPrefix) {
+        this.outputUriPrefix = json.outputUriPrefix; //[Data format: ]
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace

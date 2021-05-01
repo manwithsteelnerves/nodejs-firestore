@@ -10,36 +10,35 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
+import { FieldTransform } from './fieldTransform';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * A transformation of a document.
  */
 export class DocumentTransform {
-  /**
-   * The name of the document to transform.
-   */
-  document?: string | null;
-  /**
-   * The list of transformations to apply to the fields of the document, in order. This must not be empty.
-   */
-  fieldTransforms?: Array<models.FieldTransform>;
+    /**
+     * The name of the document to transform.
+     */
+    document?: string;
+    /**
+     * The list of transformations to apply to the fields of the document, in order. This must not be empty.
+     */
+    fieldTransforms?: Array<FieldTransform>;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.document) {
-      this.document = json.document; //[Data format: ]
-    }
-    if (json.fieldTransforms) {
-      this.fieldTransforms = [];
-      json.fieldTransforms.forEach((element: models.FieldTransform) => {
-        this.fieldTransforms?.push(new models.FieldTransform(element));
-      });
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.document) {
+        this.document = json.document; //[Data format: ]
+        }
+        if (json.fieldTransforms) {
+        this.fieldTransforms = [];
+        json.fieldTransforms.forEach((element: FieldTransform) => {
+            this.fieldTransforms?.push(new FieldTransform(element));
+        });
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace

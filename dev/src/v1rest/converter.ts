@@ -1,8 +1,8 @@
 import * as protos from '../../protos/firestore_v1_proto_api';
 import {bufferFromString} from './helpers';
-import {BeginTransactionResponse} from './models';
 import {CallOptions} from 'google-gax';
 import {MethodOptions} from 'googleapis/build/src/apis/firestore';
+import {BeginTransactionResponse} from './models/beginTransactionResponse';
 
 export function convertBeginTransactionResponse(
   response: BeginTransactionResponse

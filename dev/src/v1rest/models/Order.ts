@@ -10,36 +10,40 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
+import { FieldReference } from './fieldReference';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * An order on a field.
  */
 export class Order {
-  /**
-   * The direction to order by. Defaults to `ASCENDING`.
-   */
-  direction?: Order.DirectionEnum;
-  /**
-   * The field to order by.
-   */
-  field?: models.FieldReference;
+    /**
+     * The direction to order by. Defaults to `ASCENDING`.
+     */
+    direction?: Order.DirectionEnum;
+    /**
+     * The field to order by.
+     */
+    field?: FieldReference;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.direction) {
-      this.direction = json.direction; //[Data format: ]
-    }
-    if (json.field) {
-      this.field = new models.FieldReference(json.field);
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.direction) {
+        this.direction = json.direction; //[Data format: ]
+        }
+        if (json.field) {
+        this.field = new FieldReference(json.field);
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace Order {
-  export type DirectionEnum =  'DIRECTION_UNSPECIFIED'|'ASCENDING'|'DESCENDING';
+    export type DirectionEnum = 'DIRECTION_UNSPECIFIED' | 'ASCENDING' | 'DESCENDING';
+    export const DirectionEnum = {
+        DIRECTIONUNSPECIFIED: 'DIRECTION_UNSPECIFIED' as DirectionEnum,
+        ASCENDING: 'ASCENDING' as DirectionEnum,
+        DESCENDING: 'DESCENDING' as DirectionEnum
+    }
 }

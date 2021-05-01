@@ -10,36 +10,35 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
+import { Document } from './document';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * The response for Firestore.ListDocuments.
  */
 export class ListDocumentsResponse {
-  /**
-   * The Documents found.
-   */
-  documents?: Array<models.Document>;
-  /**
-   * The next page token.
-   */
-  nextPageToken?: string | null;
+    /**
+     * The Documents found.
+     */
+    documents?: Array<Document>;
+    /**
+     * The next page token.
+     */
+    nextPageToken?: string;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.documents) {
-      this.documents = [];
-      json.documents.forEach((element: models.Document) => {
-        this.documents?.push(new models.Document(element));
-      });
-    }
-    if (json.nextPageToken) {
-      this.nextPageToken = json.nextPageToken; //[Data format: ]
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.documents) {
+        this.documents = [];
+        json.documents.forEach((element: Document) => {
+            this.documents?.push(new Document(element));
+        });
+        }
+        if (json.nextPageToken) {
+        this.nextPageToken = json.nextPageToken; //[Data format: ]
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace

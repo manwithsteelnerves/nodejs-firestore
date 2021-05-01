@@ -10,29 +10,28 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
+import { FieldReference } from './fieldReference';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * The projection of document's fields to return.
  */
 export class Projection {
-  /**
-   * The fields to return. If empty, all fields are returned. To only return the name of the document, use `['__name__']`.
-   */
-  fields?: Array<models.FieldReference>;
+    /**
+     * The fields to return. If empty, all fields are returned. To only return the name of the document, use `['__name__']`.
+     */
+    fields?: Array<FieldReference>;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.fields) {
-      this.fields = [];
-      json.fields.forEach((element: models.FieldReference) => {
-        this.fields?.push(new models.FieldReference(element));
-      });
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.fields) {
+        this.fields = [];
+        json.fields.forEach((element: FieldReference) => {
+            this.fields?.push(new FieldReference(element));
+        });
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace

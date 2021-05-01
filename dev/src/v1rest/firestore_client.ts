@@ -1,11 +1,9 @@
 import {GapicClient} from '../types';
-import {
-  AuthPlus,
-  firestore,
-  firestore_v1,
-} from 'googleapis/build/src/apis/firestore';
+import {firestore_v1} from 'googleapis/build/src/apis/firestore/v1';
+import {firestore} from 'googleapis/build/src/apis/firestore';
 // eslint-disable-next-line node/no-extraneous-import
 import {
+  AuthPlus,
   GaxiosResponse,
   Compute,
   JWT,
@@ -16,18 +14,16 @@ import {CallOptions, ClientOptions} from 'google-gax';
 
 import * as protos from '../../protos/firestore_v1_proto_api';
 import {Duplex, Transform} from 'stream';
-import {BatchGetDocumentsRequest} from './models/BatchGetDocumentsRequest';
-import {BeginTransactionRequest} from './models/BeginTransactionRequest';
-import {CommitRequest} from './models/CommitRequest';
-import {
-  BatchWriteRequest,
-  ListCollectionIdsRequest,
-  PartitionQueryRequest,
-  RollbackRequest,
-  RunQueryRequest,
-} from './models';
 import {convertOptions} from './converter';
 import {logger} from '../logger';
+import {BeginTransactionRequest} from './models/beginTransactionRequest';
+import {CommitRequest} from './models/commitRequest';
+import {BatchWriteRequest} from './models/batchWriteRequest';
+import {RollbackRequest} from './models/rollbackRequest';
+import {BatchGetDocumentsRequest} from './models/batchGetDocumentsRequest';
+import {RunQueryRequest} from './models/runQueryRequest';
+import {ListCollectionIdsRequest} from './models/listCollectionIdsRequest';
+import {PartitionQueryRequest} from './models/partitionQueryRequest';
 
 type Firestore = firestore_v1.Firestore;
 

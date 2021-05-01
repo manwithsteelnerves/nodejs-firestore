@@ -10,36 +10,35 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
+import { Write } from './write';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * The request for Firestore.Commit.
  */
 export class CommitRequest {
-  /**
-   * If set, applies all writes in this transaction, and commits it.
-   */
-  transaction?: string | null;
-  /**
-   * The writes to apply. Always executed atomically and in order.
-   */
-  writes?: Array<models.Write>;
+    /**
+     * If set, applies all writes in this transaction, and commits it.
+     */
+    transaction?: string;
+    /**
+     * The writes to apply. Always executed atomically and in order.
+     */
+    writes?: Array<Write>;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.transaction) {
-      this.transaction = helpers.stringFromBufferJson(json.transaction); //[Data format: byte]
-    }
-    if (json.writes) {
-      this.writes = [];
-      json.writes.forEach((element: models.Write) => {
-        this.writes?.push(new models.Write(element));
-      });
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.transaction) {
+        this.transaction = helpers.stringFromBufferJson(json.transaction); //[Data format: byte]
+        }
+        if (json.writes) {
+        this.writes = [];
+        json.writes.forEach((element: Write) => {
+            this.writes?.push(new Write(element));
+        });
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace

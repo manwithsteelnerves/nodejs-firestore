@@ -10,47 +10,46 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
+import { Document } from './document';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * The streamed response for Firestore.BatchGetDocuments.
  */
 export class BatchGetDocumentsResponse {
-  /**
-   * A document that was requested.
-   */
-  found?: models.Document;
-  /**
-   * A document name that was requested but does not exist. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
-   */
-  missing?: string | null;
-  /**
-   * The time at which the document was read. This may be monotically increasing, in this case the previous documents in the result stream are guaranteed not to have changed between their read_time and this one.
-   */
-  readTime?: string | null;
-  /**
-   * The transaction that was started as part of this request. Will only be set in the first response, and only if BatchGetDocumentsRequest.new_transaction was set in the request.
-   */
-  transaction?: string | null;
+    /**
+     * A document that was requested.
+     */
+    found?: Document;
+    /**
+     * A document name that was requested but does not exist. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
+     */
+    missing?: string;
+    /**
+     * The time at which the document was read. This may be monotically increasing, in this case the previous documents in the result stream are guaranteed not to have changed between their read_time and this one.
+     */
+    readTime?: string;
+    /**
+     * The transaction that was started as part of this request. Will only be set in the first response, and only if BatchGetDocumentsRequest.new_transaction was set in the request.
+     */
+    transaction?: string;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.found) {
-      this.found = new models.Document(json.found);
-    }
-    if (json.missing) {
-      this.missing = json.missing; //[Data format: ]
-    }
-    if (json.readTime) {
-      this.readTime = helpers.stringFromTimestampJson(json.readTime); //[Data format: google-datetime
-    }
-    if (json.transaction) {
-      this.transaction = helpers.stringFromBufferJson(json.transaction); //[Data format: byte]
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.found) {
+        this.found = new Document(json.found);
+        }
+        if (json.missing) {
+        this.missing = json.missing; //[Data format: ]
+        }
+        if (json.readTime) {
+        this.readTime = helpers.stringFromTimestampJson(json.readTime); //[Data format: google-datetime
+        }
+        if (json.transaction) {
+        this.transaction = helpers.stringFromBufferJson(json.transaction); //[Data format: byte]
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace

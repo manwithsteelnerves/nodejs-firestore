@@ -10,47 +10,47 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
+import { StructuredQuery } from './structuredQuery';
+import { TransactionOptions } from './transactionOptions';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * The request for Firestore.RunQuery.
  */
 export class RunQueryRequest {
-  /**
-   * Starts a new transaction and reads the documents. Defaults to a read-only transaction. The new transaction ID will be returned as the first response in the stream.
-   */
-  newTransaction?: models.TransactionOptions;
-  /**
-   * Reads documents as they were at the given time. This may not be older than 270 seconds.
-   */
-  readTime?: string | null;
-  /**
-   * A structured query.
-   */
-  structuredQuery?: models.StructuredQuery;
-  /**
-   * Reads documents in a transaction.
-   */
-  transaction?: string | null;
+    /**
+     * Starts a new transaction and reads the documents. Defaults to a read-only transaction. The new transaction ID will be returned as the first response in the stream.
+     */
+    newTransaction?: TransactionOptions;
+    /**
+     * Reads documents as they were at the given time. This may not be older than 270 seconds.
+     */
+    readTime?: string;
+    /**
+     * A structured query.
+     */
+    structuredQuery?: StructuredQuery;
+    /**
+     * Reads documents in a transaction.
+     */
+    transaction?: string;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.newTransaction) {
-      this.newTransaction = new models.TransactionOptions(json.newTransaction);
-    }
-    if (json.readTime) {
-      this.readTime = helpers.stringFromTimestampJson(json.readTime); //[Data format: google-datetime
-    }
-    if (json.structuredQuery) {
-      this.structuredQuery = new models.StructuredQuery(json.structuredQuery);
-    }
-    if (json.transaction) {
-      this.transaction = helpers.stringFromBufferJson(json.transaction); //[Data format: byte]
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.newTransaction) {
+        this.newTransaction = new TransactionOptions(json.newTransaction);
+        }
+        if (json.readTime) {
+        this.readTime = helpers.stringFromTimestampJson(json.readTime); //[Data format: google-datetime
+        }
+        if (json.structuredQuery) {
+        this.structuredQuery = new StructuredQuery(json.structuredQuery);
+        }
+        if (json.transaction) {
+        this.transaction = helpers.stringFromBufferJson(json.transaction); //[Data format: byte]
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace

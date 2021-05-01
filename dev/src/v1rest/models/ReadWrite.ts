@@ -10,26 +10,24 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * Options for a transaction that can be used to read and write documents.
  */
 export class ReadWrite {
-  /**
-   * An optional transaction to retry.
-   */
-  retryTransaction?: string | null;
+    /**
+     * An optional transaction to retry.
+     */
+    retryTransaction?: string;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.retryTransaction) {
-      this.retryTransaction = helpers.stringFromBufferJson(json.retryTransaction); //[Data format: byte]
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.retryTransaction) {
+        this.retryTransaction = helpers.stringFromBufferJson(json.retryTransaction); //[Data format: byte]
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace

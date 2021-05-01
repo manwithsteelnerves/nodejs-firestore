@@ -10,57 +10,63 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import * as models from './index';
+import { Status } from './status';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as helpers from '../helpers';
+
 
 /**
  * Targets being watched have changed.
  */
 export class TargetChange {
-  /**
-   * The error that resulted in this change, if applicable.
-   */
-  cause?: models.Status;
-  /**
-   * The consistent `read_time` for the given `target_ids` (omitted when the target_ids are not at a consistent snapshot). The stream is guaranteed to send a `read_time` with `target_ids` empty whenever the entire stream reaches a new consistent snapshot. ADD, CURRENT, and RESET messages are guaranteed to (eventually) result in a new consistent snapshot (while NO_CHANGE and REMOVE messages are not). For a given stream, `read_time` is guaranteed to be monotonically increasing.
-   */
-  readTime?: string | null;
-  /**
-   * A token that can be used to resume the stream for the given `target_ids`, or all targets if `target_ids` is empty. Not set on every target change.
-   */
-  resumeToken?: string | null;
-  /**
-   * The type of change that occurred.
-   */
-  targetChangeType?: TargetChange.TargetChangeTypeEnum;
-  /**
-   * The target IDs of targets that have changed. If empty, the change applies to all targets. The order of the target IDs is not defined.
-   */
-  targetIds?: Array<number>;
+    /**
+     * The error that resulted in this change, if applicable.
+     */
+    cause?: Status;
+    /**
+     * The consistent `read_time` for the given `target_ids` (omitted when the target_ids are not at a consistent snapshot). The stream is guaranteed to send a `read_time` with `target_ids` empty whenever the entire stream reaches a new consistent snapshot. ADD, CURRENT, and RESET messages are guaranteed to (eventually) result in a new consistent snapshot (while NO_CHANGE and REMOVE messages are not). For a given stream, `read_time` is guaranteed to be monotonically increasing.
+     */
+    readTime?: string;
+    /**
+     * A token that can be used to resume the stream for the given `target_ids`, or all targets if `target_ids` is empty. Not set on every target change.
+     */
+    resumeToken?: string;
+    /**
+     * The type of change that occurred.
+     */
+    targetChangeType?: TargetChange.TargetChangeTypeEnum;
+    /**
+     * The target IDs of targets that have changed. If empty, the change applies to all targets. The order of the target IDs is not defined.
+     */
+    targetIds?: Array<number>;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(json: any) {
-    if (json.cause) {
-      this.cause = new models.Status(json.cause);
-    }
-    if (json.readTime) {
-      this.readTime = helpers.stringFromTimestampJson(json.readTime); //[Data format: google-datetime
-    }
-    if (json.resumeToken) {
-      this.resumeToken = helpers.stringFromBufferJson(json.resumeToken); //[Data format: byte]
-    }
-    if (json.targetChangeType) {
-      this.targetChangeType = json.targetChangeType; //[Data format: ]
-    }
-    if (json.targetIds) {
-      this.targetIds = json.targetIds;
-    }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+    constructor(json: any) {
+        if (json.cause) {
+        this.cause = new Status(json.cause);
+        }
+        if (json.readTime) {
+        this.readTime = helpers.stringFromTimestampJson(json.readTime); //[Data format: google-datetime
+        }
+        if (json.resumeToken) {
+        this.resumeToken = helpers.stringFromBufferJson(json.resumeToken); //[Data format: byte]
+        }
+        if (json.targetChangeType) {
+        this.targetChangeType = json.targetChangeType; //[Data format: ]
+        }
+        if (json.targetIds) {
+        this.targetIds = json.targetIds;
+        }
   }
 }
-// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace TargetChange {
-  export type TargetChangeTypeEnum =  'NO_CHANGE'|'ADD'|'REMOVE'|'CURRENT'|'RESET';
+    export type TargetChangeTypeEnum = 'NO_CHANGE' | 'ADD' | 'REMOVE' | 'CURRENT' | 'RESET';
+    export const TargetChangeTypeEnum = {
+        NOCHANGE: 'NO_CHANGE' as TargetChangeTypeEnum,
+        ADD: 'ADD' as TargetChangeTypeEnum,
+        REMOVE: 'REMOVE' as TargetChangeTypeEnum,
+        CURRENT: 'CURRENT' as TargetChangeTypeEnum,
+        RESET: 'RESET' as TargetChangeTypeEnum
+    }
 }
